@@ -25,6 +25,7 @@ SRC          = $(TARGET).c \
 LUFA_PATH    = ./LUFA
 CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER \
 							 -DDEBOUNCE_ENABLED \
+							 -D__AVR_ATmega32U4__ \
 							 -Iinclude
 LD_FLAGS     =
 
@@ -32,7 +33,7 @@ DFU          = dfu-programmer $(MCU)
 
 all:
 
-fl: flash launch
+w: all flash launch
 
 flash:
 	$(DFU) erase; $(DFU) flash $(TARGET).hex

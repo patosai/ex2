@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 #define MATRIX_ROWS 5
-#define MATRIX_COLS 14
+#define MATRIX_COLS 7
 
 #if (MATRIX_COLS <= 8)
 typedef uint8_t  matrix_row_t;

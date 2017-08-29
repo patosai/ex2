@@ -1,6 +1,5 @@
 #include "keyboard.h"
 #include "keymap.h"
-#include "led.h"
 #include "matrix.h"
 
 #define MAX_KEYCODES 6
@@ -65,14 +64,16 @@ void initialize_hardware() {
   PMIC.CTRL = PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_HILVLEN_bm;
 #endif
 
+  disable_adc();
+
   matrix_initialize();
   USB_Init();
 }
 
 void fill_keyboard_report(USB_KeyboardReport_Data_t* keyboardReport) {
   uint8_t used_keycodes = 0;
-  matrix_row_t row = 0;
-  matrix_row_t col = 0;
+  matrix_row_t row;
+  matrix_row_t col;
 
   for (row = 0; row < MATRIX_ROWS && used_keycodes < MAX_KEYCODES; ++row) {
     for (col = 0; col < MATRIX_COLS && used_keycodes < MAX_KEYCODES; ++col) {
@@ -83,7 +84,7 @@ void fill_keyboard_report(USB_KeyboardReport_Data_t* keyboardReport) {
 
         if (key_is_modifier(key)) {
           keyboardReport->Modifier |= key_to_modifier(key);
-        } else {
+        } else if (key != KC_NONE) {
           keyboardReport->KeyCode[used_keycodes] = key;
           ++used_keycodes;
         }
@@ -96,18 +97,19 @@ void check_for_layer_change_command(keycode_t key) {
   if (key_is_layer_command(key)) {
     uint8_t layer = key_layer_to_num(key);
     keymap_set_current_layer(layer);
-    led_backlight_blink();
   }
+}
+
+void disable_adc(void) {
+  ADCSRA = 0;
 }
 
 /** Event handler for the library USB Connection event. */
 void EVENT_USB_Device_Connect(void) {
-  led_backlight_on();
 }
 
 /** Event handler for the library USB Disconnection event. */
 void EVENT_USB_Device_Disconnect(void) {
-  led_backlight_off();
 }
 
 /** Event handler for the library USB Configuration Changed event. */
@@ -165,12 +167,5 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                                           const uint8_t ReportType,
                                           const void* ReportData,
                                           const uint16_t ReportSize) {
-  uint8_t* LEDReport = (uint8_t*)ReportData;
-
-  if (*LEDReport & HID_KEYBOARD_LED_CAPSLOCK) {
-    led_caps_lock_on();
-  } else {
-    led_caps_lock_off();
-  }
 }
 

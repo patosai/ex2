@@ -18,6 +18,7 @@
 void initialize_hardware(void);
 void fill_keyboard_report(USB_KeyboardReport_Data_t* keyboardReport);
 void check_for_layer_change_command(keycode_t key);
+void disable_adc(void);
 
 void EVENT_USB_Device_Connect(void);
 void EVENT_USB_Device_Disconnect(void);
