@@ -10,6 +10,7 @@
 
 static void         init_cols(void);
 static matrix_row_t read_cols(void);
+static void         init_rows(void);
 static void         select_row(uint8_t row);
 static void         unselect_rows(void);
 
@@ -25,7 +26,7 @@ static uint8_t matrix_debounce_counter;
 #endif
 
 void matrix_initialize(void) {
-  unselect_rows();
+  init_rows();
   init_cols();
 
   uint8_t i;
@@ -53,12 +54,12 @@ bool matrix_switch_pressed_at(uint8_t row_num, uint8_t col_num) {
 void matrix_scan(void) {
   uint8_t i;
 
-  for (i = 0; i < MATRIX_ROWS; ++i) {
+//  for (i = 0; i < MATRIX_ROWS; ++i) {
+  for (i = 0; i < 1; ++i) {
     select_row(i);
-    _delay_ms(5);
+    _delay_ms(1);
     matrix_row_t row = read_cols();
     unselect_rows();
-    _delay_ms(5);
 
 #ifdef DEBOUNCE_ENABLED
     if (matrix_state[i] != row) {
@@ -132,12 +133,16 @@ static void select_row(uint8_t row) {
   }
 }
 
+static void init_rows(void) {
+  // Output high (DDR:1, PORT:1) to unselect
+  DDRD  |= 0b11010000;
+  PORTD |= 0b11010000;
+  DDRB  |= 0b00100000;
+  PORTB |= 0b00100000;
+  DDRF  |= 0b00000001;
+  PORTF |= 0b00000001;
+}
+
 static void unselect_rows(void) {
-  // Hi-Z (DDR:0, PORT:0) to unselect
-  DDRD  &= ~0b11010000;
-  PORTD &= ~0b11010000;
-  DDRB  &= ~0b00100000;
-  PORTB &= ~0b00100000;
-  DDRF  &= ~0b00000001;
-  PORTF &= ~0b00000001;
+  init_rows();
 }
