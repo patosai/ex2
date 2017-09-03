@@ -2,6 +2,7 @@
 *.d
 *.elf
 *.hex
+!bootloader/BootloaderDFU.hex
 *.eep
 *.sym
 *.bin
