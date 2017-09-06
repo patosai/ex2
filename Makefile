@@ -38,8 +38,13 @@ w: all flash launch
 flash:
 	$(DFU) erase; $(DFU) flash $(TARGET).hex
 
+bootloader:
+	avrdude -p m32u4 -c usbasp -e -U flash:w:bootloader/BootloaderDFU.hex
+
 launch:
 	$(DFU) reset
+
+.PHONY: bootloader
 
 # Include LUFA build script makefiles
 include $(LUFA_PATH)/Build/lufa_core.mk
