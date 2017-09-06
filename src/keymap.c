@@ -8,11 +8,11 @@ static uint8_t layer = 0;
 const keycode_t KEYMAP[KEYMAP_LAYERS][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
   // 0 - the regular
   {
-    { KC_5,      KC_6,     KC_7,     KC_8,    KC_9,      KC_0,      KC_SPACE },
-    { KC_T,      KC_Y,     KC_U,     KC_I,    KC_O,      KC_P,      KC_SPACE },
-    { KC_G,      KC_H,     KC_J,     KC_K,    KC_L,      KC_SCOLON, KC_SPACE },
-    { KC_V,      KC_B,     KC_N,     KC_M,    KC_COMMA,  KC_DOT,    KC_SPACE },
-    { KC_SPACE,  KC_SPACE, KC_SPACE,  KC_B,    KC_SPACE,   KC_SPACE,   KC_SPACE }
+    { KC_NONE,      KC_6,     KC_7,     KC_8,    KC_9,      KC_0,      KC_BSLASH },
+    { KC_NONE,      KC_Y,     KC_U,     KC_I,    KC_O,      KC_P,      KC_NONE },
+    { KC_NONE,      KC_H,     KC_J,     KC_K,    KC_L,      KC_SCOLON, KC_SCOLON },
+    { KC_PGUP,      KC_B,     KC_N,     KC_M,    KC_COMMA,  KC_DOT,    KC_COMMA },
+    { KC_PGDOWN,    KC_SPACE, KC_TAB,   KC_LEFT, KC_DOWN,   KC_UP,     KC_RIGHT }
   },
   // 1 - arrows and media
   {
