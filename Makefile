@@ -25,13 +25,17 @@ SRC          = $(TARGET).c \
 LUFA_PATH    = ./LUFA
 CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER \
 							 -DDEBOUNCE_ENABLED \
-							 -D__AVR_ATmega32U4__ \
 							 -Iinclude
 LD_FLAGS     =
 
 DFU          = dfu-programmer $(MCU)
 
-all:
+default: hex
+
+left: CC_FLAGS += -DKEYBOARD_LEFT
+left: hex
+
+right: hex
 
 w: all flash launch
 
@@ -47,12 +51,7 @@ launch:
 .PHONY: bootloader
 
 # Include LUFA build script makefiles
-include $(LUFA_PATH)/Build/lufa_core.mk
 include $(LUFA_PATH)/Build/lufa_sources.mk
 include $(LUFA_PATH)/Build/lufa_build.mk
 include $(LUFA_PATH)/Build/lufa_cppcheck.mk
-include $(LUFA_PATH)/Build/lufa_doxygen.mk
 include $(LUFA_PATH)/Build/lufa_dfu.mk
-include $(LUFA_PATH)/Build/lufa_hid.mk
-include $(LUFA_PATH)/Build/lufa_avrdude.mk
-include $(LUFA_PATH)/Build/lufa_atprogram.mk
