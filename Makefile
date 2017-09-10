@@ -1,16 +1,3 @@
-#
-#             LUFA Library
-#     Copyright (C) Dean Camera, 2015.
-#
-#  dean [at] fourwalledcubicle [dot] com
-#           www.lufa-lib.org
-#
-# --------------------------------------
-#         LUFA Project Makefile.
-# --------------------------------------
-
-# Run "make help" for target help.
-
 MCU          = atmega32u4
 ARCH         = AVR8
 BOARD        = USBKEY
@@ -37,7 +24,8 @@ left: hex
 
 right: hex
 
-w: all flash launch
+all-left: left flash launch
+all-right: right flash launch
 
 flash:
 	$(DFU) erase; $(DFU) flash $(TARGET).hex
