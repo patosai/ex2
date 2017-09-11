@@ -2,6 +2,12 @@
 
 An ergonomic, split mechanical keyboard
 
+## How to use
+1. Plug in the keyboard
+2. Edit the keymap if you wish
+3. Build and flash the firmware, see below.
+4. Run!
+
 ## Editing the keymap
 See the files `include/keymap_left.h` and `include/keymap_right.h`. Available keycodes are in `include/keycodes.h`.
 
@@ -22,3 +28,5 @@ The firmware assumes the LUFA DFU bootloader is being used. If you have a progra
 Once the firmware is built, run
 
 `make flash`
+
+Once flashed, you can start the application using `make launch`. When you plug in the keyboard, it will automatically run. If you wish to flash again, either push the reset button when powered, or plug in the keyboard while holding the reset button.

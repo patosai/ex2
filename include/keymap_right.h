@@ -8,11 +8,11 @@
 const keycode_t KEYMAP[KEYMAP_LAYERS][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
   // 0 - the regular
   {
-    { KC_LAYER_0,  KC_6,     KC_7,     KC_8,     KC_9,      KC_0,      KC_PSCREEN },
-    { KC_LAYER_1,  KC_Y,     KC_U,     KC_I,     KC_O,      KC_P,      KC_BSLASH },
-    { KC_RBRACKET, KC_H,     KC_J,     KC_K,     KC_L,      KC_SCOLON, KC_QUOTE },
-    { KC_GRAVE,    KC_B,     KC_N,     KC_M,     KC_COMMA,  KC_DOT,    KC_SLASH },
-    { KC_TAB,      KC_SPACE, KC_ENTER, KC_MINUS, KC_EQUAL,  KC_LEFT,   KC_RIGHT }
+    { KC_LAYER_0,  KC_6,     KC_7,     KC_8,     KC_9,      KC_0,       KC_GRAVE },
+    { KC_LAYER_1,  KC_Y,     KC_U,     KC_I,     KC_O,      KC_P,       KC_BSLASH },
+    { KC_RBRACKET, KC_H,     KC_J,     KC_K,     KC_L,      KC_SCOLON,  KC_QUOTE },
+    { KC_PGUP,     KC_N,     KC_M,     KC_COMMA, KC_DOT,    KC_SLASH,   KC_MINUS },
+    { KC_PGDOWN,   KC_SPACE, KC_ENTER, KC_LEFT,  KC_RIGHT,  KC_PSCREEN, KC_EQUAL }
   },
   // 1 - numpad
   {
