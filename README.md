@@ -23,10 +23,10 @@ or
 Due to the Makefile not registering changes between making the left and right firmware sides, you will need clean the repo first. This will be fixed soon.
 
 ## Flashing
-The firmware assumes the LUFA DFU bootloader is being used. If you have a programmer you can use `make bootloader` to flash it.
+The firmware assumes the LUFA DFU bootloader is being used, it should already be there so you don't need to flash it again. Otherwise, `make bootloader`.
 
-Once the firmware is built, run
+To flash the firmware that you built, first put the board into DFU mode by pressing the reset button a couple of times, or by plugging in the board with the reset button held. Then run
 
 `make flash`
 
-Once flashed, you can start the application using `make launch`. When you plug in the keyboard, it will automatically run. If you wish to flash again, either push the reset button when powered, or plug in the keyboard while holding the reset button.
+Once flashed, you can start the application using `make launch` or by plugging in the keyboard in again.
