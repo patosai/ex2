@@ -14,13 +14,13 @@ const keycode_t KEYMAP[KEYMAP_LAYERS][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
     { KC_PGUP,     KC_N,     KC_M,     KC_COMMA, KC_DOT,    KC_SLASH,   KC_MINUS },
     { KC_PGDOWN,   KC_SPACE, KC_ENTER, KC_LEFT,  KC_RIGHT,  KC_PSCREEN, KC_EQUAL }
   },
-  // 1 - numpad and arrows
+  // 1 - numpad, arrows, some volume
   {
     { KC_LAYER_0,  KC_NONE,  KC_NONE,    KC_TAB,   KC_KP_SLASH, KC_KP_ASTERISK,   KC_KP_MINUS },
     { KC_LAYER_1,  KC_UP,    KC_NONE,    KC_KP_7,  KC_KP_8,     KC_KP_9,          KC_KP_PLUS },
     { KC_LEFT,     KC_DOWN,  KC_RIGHT,   KC_KP_4,  KC_KP_5,     KC_KP_6,          KC_KP_EQUAL },
-    { KC_NONE,     KC_NONE,  KC_NONE,    KC_KP_1,  KC_KP_2,     KC_KP_3,          KC_KP_ENTER },
-    { KC_NONE,     KC_SPACE, KC_NUMLOCK, KC_KP_0,  KC_COMMA,    KC_KP_DOT,        KC_BSPACE },
+    { KC_VOLUP,    KC_NONE,  KC_NONE,    KC_KP_1,  KC_KP_2,     KC_KP_3,          KC_KP_ENTER },
+    { KC_VOLDOWN,  KC_SPACE, KC_NUMLOCK, KC_KP_0,  KC_COMMA,    KC_KP_DOT,        KC_BSPACE },
   }
 };
 
